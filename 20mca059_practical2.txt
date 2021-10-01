@@ -1,0 +1,151 @@
+CALCULATOR
+------------------------------------------------------------------------------
+
+MainActivity.java
+package com.example.calculator;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
+
+public class MainActivity extends AppCompatActivity {
+    Button btn_add;
+    Button btn_sub;
+    Button btn_mul;
+    Button btn_div;
+
+    EditText txtnum1;
+    EditText txtnum2;
+
+    TextView txtshow;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        btn_add=findViewById(R.id.btn_add);
+        btn_div=findViewById(R.id.btn_div);
+        btn_mul=findViewById(R.id.btn_mul);
+        btn_sub=findViewById(R.id.btn_sub);
+        txtnum1=findViewById(R.id.txtnum1);
+        txtnum2=findViewById(R.id.txtnum2);
+        txtshow=findViewById(R.id.txtshow);
+
+
+
+        btn_div.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Double res=Double.valueOf(txtnum1.getText().toString()) / Double.valueOf(txtnum2.getText().toString());
+                txtshow.setText(res.toString());
+            }
+        });
+
+        btn_mul.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Integer res=Integer.valueOf(txtnum1.getText().toString())*Integer.valueOf(txtnum2.getText().toString());
+                txtshow.setText(res.toString());
+            }
+        });
+
+        btn_sub.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Integer res=Integer.valueOf(txtnum1.getText().toString())-Integer.valueOf(txtnum2.getText().toString());
+                txtshow.setText(res.toString());
+            }
+        });
+
+        btn_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Integer res=Integer.valueOf(txtnum1.getText().toString())+Integer.valueOf(txtnum2.getText().toString());
+                txtshow.setText(res.toString());
+
+
+
+            }
+        });
+
+    }
+}
+-----------------------------------------------------------
+activity_main.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+
+
+<EditText
+        android:id="@+id/txtnum1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        android:gravity="center"
+
+        />
+
+<EditText
+    android:id="@+id/txtnum2"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:ems="10"
+    android:inputType="number"
+    android:gravity="center"
+
+    />
+
+<Button
+    android:id="@+id/btn_add"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="ADD"
+    android:onClick="MyClickMethod"
+    />
+<Button
+        android:id="@+id/btn_sub"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SUB"
+        android:onClick="MyClickMethod"
+        />
+<Button
+        android:id="@+id/btn_mul"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="MULTIPLY"
+        android:onClick="MyClickMethod"
+        />
+<Button
+        android:id="@+id/btn_div"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="DIVIDE"
+        android:onClick="MyClickMethod"
+        />
+
+<TextView
+    android:id="@+id/txtshow"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:textSize="16dp"
+    android:text="RESULT"
+    />
+</LinearLayout>
